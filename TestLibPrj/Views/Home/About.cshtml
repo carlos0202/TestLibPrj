@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup>
+    <h2>Web Api Demo + Microsoft.Ajax</h2>
+</hgroup>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <fieldset>
+                <legend>Books</legend>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr class="bg-success">
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="books" class="sys-template">
+                            <tr sys:command="select">
+                                <td>{{Id}}</td>
+                                <td>{{Name}}</td>
+                                <td>{{Price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+
+            <div class="row"><label>&nbsp;</label></div>
+
+            <div class="sys-template" id="details">
+                <fieldset>
+                    <legend>Book Details</legend>
+                    <div class="form-group col-md-4">
+                        <label for="Id">Id</label>
+                        <input class="form-control" id="Id" sys:value="{{ Id }}" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Name">Name</label>
+                        <input class="form-control" id="Name" sys:value="{{ Name }}" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Price">Price</label>
+                        <input class="form-control" id="Price" sys:value="{{ Price }}" />
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $.getJSON('/api/books', function (data) {
+            var table = Sys.create.dataView('#books',
+                { initialSelectedIndex: 0, selectedItemClass: 'selected' });
+            table.set_data(data);
+            var details = Sys.create.dataView('#details');
+            Sys.bind(details, 'data', table, 'selectedData');
+        });
+    </script>
+}
