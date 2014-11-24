@@ -29,6 +29,20 @@ textarea {
     max-width: 280px;
 }*/
 
+fieldset {
+    float: none;
+    display: table-cell;
+    width: 100%;
+}
+
+/*ie10+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+   fieldset{
+       float: left;
+   }
+}
+
+
 div.vertical-middle {
     vertical-align: middle;
     display: table-cell;
@@ -46,6 +60,14 @@ div.vertical-middle {
     margin-right: 0 !important;
 }
 
-pr0 {
+.pr0 {
     padding-right: 0 !important;
+}
+
+.pl0 {
+    padding-left: 0 !important;
+}
+
+.mt10 {
+    margin-top: 10px !important;
 }

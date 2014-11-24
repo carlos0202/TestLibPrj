@@ -6,27 +6,26 @@
     <h2>Web Api Demo + AngularJs</h2>
 </hgroup>
 
-<div class="row">
+<div class="well row">
     <div class="col-md-12">
-        <div class="well">
-            <fieldset>
-                <legend>Books</legend>
-                <div ng-controller="BooksController">
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label>Search:</label>
-                            <input type="text" class="form-control" placeholder="Search Book" ng-model="queryBooks" autofocus />
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Order By:</label>
-                            <select class="form-control" ng-model="orderByBooks">
-                                <option value="Name">Name</option>
-                                <option value="Price">Price</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Direction:</label>
-                            <div class="col-md-12">
+        <fieldset>
+            <legend>Books</legend>
+            <div ng-controller="BooksController">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Search:</label>
+                        <input type="text" class="form-control" placeholder="Search Book" ng-model="queryBooks" autofocus />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Order By:</label>
+                        <select class="form-control" ng-model="orderByBooks">
+                            <option value="Name">Name</option>
+                            <option value="Price">Price</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Direction:</label><br />
+                        @*<div class="col-md-12">
                                 <div class="col-xs-10">
                                     <label class="pr0">Ascending</label>
                                 </div>
@@ -41,33 +40,33 @@
                                 <div class="col-xs-1">
                                     <input type="radio" ng-model="direction" name="direction" value="reverse" />
                                 </div>
-                            </div>
-                            @*<label class="radio col-md-6">Asc&nbsp;<input type="radio" ng-model="direction" name="direction" checked /></label>
-                            <label class="radio col-md-6">Desc&nbsp;<input type="radio" ng-model="direction" name="direction" value="reverse" /></label>*@
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr class="bg-success">
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody id="allbooks">
-                                <tr ng-repeat="item in books | filter:queryBooks | orderBy:orderByBooks:direction">
-                                    <td>{{ item.Id }}</td>
-                                    <td>{{ item.Name }}</td>
-                                    <td>{{ item.Price }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            </div>*@
+                        <div class="mt10"></div>
+                        <label class="radio-inline pl0">Asc&nbsp;<input type="radio" ng-model="direction" name="direction" checked /></label>
+                        <label class="radio-inline">Desc&nbsp;<input type="radio" ng-model="direction" name="direction" value="reverse" /></label>
                     </div>
                 </div>
-            </fieldset>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr class="bg-success">
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allbooks">
+                            <tr ng-repeat="item in books | filter:queryBooks | orderBy:orderByBooks:direction">
+                                <td>{{ item.Id }}</td>
+                                <td>{{ item.Name }}</td>
+                                <td>{{ item.Price }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </fieldset>
 
-        </div>
     </div>
 </div>
 
